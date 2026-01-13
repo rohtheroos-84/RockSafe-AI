@@ -1,0 +1,7 @@
+{
+  "default_threshold": 0.5,
+  "model_type": "VotingClassifier (XGBoost + RandomForest + SVM)",
+  "n_features": 43,
+  "test_set_size": 1461,
+  "test_auc": 0.9076634855569076
+}

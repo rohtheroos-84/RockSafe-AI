@@ -1,0 +1,12 @@
+numpy
+pandas
+scikit-learn
+xgboost
+flask
+flask-cors
+gunicorn
+joblib
+fastapi
+uvicorn
+pydantic
+twilio

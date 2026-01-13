@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Jupyter / VS Code
+.ipynb_checkpoints/
+.vscode/
+
+# Data & models
+data/
+*.h5
+*.ckpt
+
+# OS files
+.DS_Store
+Thumbs.db
+
+/SMS_INTEGRATION_COMPLETE.md
+/backend/.env
+/backend/direct_sms_test.py
+/backend/sms_integration_demo.py    
+/backend/test_sms.py
+/backend/test_sms_simple.py
