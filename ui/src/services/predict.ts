@@ -52,7 +52,8 @@ export interface PredictionResponse {
   } | null;
 }
 
-const BACKEND_URL = 'http://127.0.0.1:8000';
+const env = (import.meta as ImportMeta & { env?: Record<string, string | undefined> }).env;
+const BACKEND_URL = (env?.VITE_API_BASE_URL ?? 'http://127.0.0.1:8000').replace(/\/$/, '');
 
 // Helper function to determine risk level
 function getRiskLevel(probability: number) {
@@ -100,7 +101,7 @@ export async function predictRockfall(features: Partial<FeatureMap>): Promise<Pr
   } catch (error: any) {
     console.error('Error in predictRockfall:', error);
     if (error.message === 'Failed to fetch') {
-      throw new Error('Cannot connect to backend server. Please ensure it is running on port 8000.');
+      throw new Error(`Cannot connect to backend server at ${BACKEND_URL}.`);
     }
     throw error;
   }
