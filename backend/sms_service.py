@@ -3,7 +3,7 @@ from datetime import datetime
 import logging
 from config import (
     TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM_NUMBER,
-    EMERGENCY_CONTACTS, ALERT_MESSAGES, SMS_ALERTS_ENABLED
+    EMERGENCY_CONTACTS, ALERT_MESSAGES, SMS_ALERTS_ENABLED, TWILIO_CONFIGURED
 )
 
 # Configure logging
@@ -14,8 +14,8 @@ class SMSAlertService:
     def __init__(self):
         """Initialize Twilio client"""
         try:
-            if TWILIO_AUTH_TOKEN == '[AuthToken]':
-                logger.warning("Twilio auth token not configured. SMS alerts will be disabled.")
+            if not TWILIO_CONFIGURED:
+                logger.warning("Twilio credentials not configured. SMS alerts will be disabled.")
                 self.client = None
             else:
                 self.client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)

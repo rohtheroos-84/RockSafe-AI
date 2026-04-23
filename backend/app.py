@@ -86,12 +86,21 @@ def metadata():
 @app.get("/sms/status")
 def get_sms_status():
     """Get SMS service status and configuration"""
-    from config import SMS_ALERTS_ENABLED, EMERGENCY_CONTACTS, TWILIO_AUTH_TOKEN
+    from config import SMS_ALERTS_ENABLED, EMERGENCY_CONTACTS, TWILIO_CONFIGURED
     return {
         "sms_enabled": SMS_ALERTS_ENABLED,
-        "twilio_configured": TWILIO_AUTH_TOKEN != '[AuthToken]',
+        "twilio_configured": TWILIO_CONFIGURED,
         "emergency_contacts_count": len(EMERGENCY_CONTACTS),
         "emergency_contacts": EMERGENCY_CONTACTS  # Remove this in production for security
+    }
+
+@app.get("/health")
+def health():
+    """Basic health endpoint for deployment probes."""
+    return {
+        "status": "ok",
+        "model_loaded": model is not None,
+        "timestamp": datetime.utcnow().isoformat()
     }
 
 @app.post("/sms/test")
