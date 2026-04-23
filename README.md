@@ -15,6 +15,15 @@
 
 ---
 
+## Documentation
+
+For the current, code-accurate documentation, use:
+
+- `docs/PROJECT_DOCUMENTATION.md`
+- `docs/DEPLOYMENT_NETLIFY.md`
+
+These files include architecture, API contracts, environment variables, known gaps, and Netlify-first live deployment steps.
+
 ## **Key Features**
 
 ### **AI-Powered Risk Assessment**
